@@ -228,3 +228,5 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 .DS_Store
+contest_evaluation/.DS_Store
+Annotations/.DS_Store
