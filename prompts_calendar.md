@@ -19,13 +19,13 @@
 
 | Ημερομηνία | Ενότητα | AI; | Περιγραφή |
 |---|---|---|---|
-| ΗΗ/ΜΜ/2026 | Φόρτωση Δεδομένων | Ναι/Όχι | *(σύντομη περιγραφή)* |
-| | Α1 — Transliteration | | |
-| | Α2 — Word Segmentation | | |
+| 01/05/2026 | Φόρτωση Δεδομένων | Ναι | debugging python code |
+| 02/05/2026 | Α1 — Transliteration | Ναι | Συνάρτηση μετατροπής Λατινικών σε Ελληνικά |
+| 02/05/2026 | Α2 — Word Segmentation | Ναι | Segmentaition - dynamic algorithm |
 | | Α3 — Λεξιλόγιο & Συχνότητα | | |
 | | Α4 — Κύρια Ονόματα | | |
 | | Α5 — Clustering & Topics | | |
-| | Α6 — Χρονολόγηση Aeneas/LLM | | |
+| 03/05/2026 | Α6 — Χρονολόγηση Aeneas/LLM | Ναι | Εξήγηση του μοντέλου, δημιουργία γραφημάτων για σύγκριση |
 | | Β1 — Προεπεξεργασία Εικόνων | | |
 | | Β2 — Image Clustering | | |
 | | Β3 — OCR Pipeline | | |
@@ -55,7 +55,18 @@
 Αν όχι, αφήστε τη σημείωση «Δεν χρησιμοποιήθηκε LLM».
 -->
 
-Δεν χρησιμοποιήθηκε LLM.
+| | |
+|---|---|
+| **Εργαλείο** | [Claude] |
+| **Μοντέλο** | [Claude Opus 4.6] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
+
+**Prompt:**
+> [Θα πρέπει να εμφανίσω images σε jupiter notebook. Ποια βιβλιοθήκη να χρησιμοποιήσω]
+
+
+**Prompt:**
+> [In the function I gave you, I want to "pull" the text that is between 'Transcript' and 'Lines'. Something is not working correctly for me and I did not get the correct result. Can you show me where I went wrong and also give me a custom check to do so that I can see that it worked correctly.]
 
 ---
 
@@ -70,12 +81,21 @@
 
 | | |
 |---|---|
-| **Εργαλείο** | [εργαλείο] |
-| **Μοντέλο** | [μοντέλο] |
-| **Ποιος χρησιμοποίησε** | Μέλος 1 / Μέλος 2 / Και οι δύο |
+| **Εργαλείο** | [Claude] |
+| **Μοντέλο** | [Claude Opus 4.6] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
 
 **Prompt:**
-> [Αντιγράψτε εδώ το ακριβές prompt που δώσατε]
+> [I have a dataset of Latin-character transcriptions of ancient Greek inscriptions.
+They use a proxy mapping. How should I design a function in Python that:
+- maps characters correctly
+- handles unknown symbols
+- preserves structure?
+Give a simple solution with examples.]
+
+**Prompt:**
+> [How can I evaluate the quality of a transliteration system, that i did before?
+Suggest simple metrics I can implement in Python.]
 
 ---
 
@@ -83,41 +103,64 @@
 
 | | |
 |---|---|
-| **Εργαλείο** | [εργαλείο] |
-| **Μοντέλο** | [μοντέλο] |
-| **Ποιος χρησιμοποίησε** | Μέλος 1 / Μέλος 2 / Και οι δύο |
+| **Εργαλείο** | [Claude] |
+| **Μοντέλο** | [Claude Opus 4.6] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
 
 **Prompt:**
 
-> [Αντιγράψτε εδώ το ακριβές prompt που δώσατε]
+> [I want to do word segmentation in ancient Greek texts that are written in scriptio continua (without spaces). How could I do it? Give me examples, 2-3 methods. I should use the dataset Ericu950/Papyri_1”, split=”train”, streaming=True. ]
 
+**Prompt:**
+
+> [Explain to me about the dynamic programming method. If I were to use this method, how would it be done to ensure proper segmentation, and ultimately evaluation of the results?]
+
+**Prompt:**
+
+> [During segmentation, it breaks up the long words that may exist because it detects small 2-letter words within them. We can see how to fix this problem. ]
+
+**Prompt:**
+
+> [I've built this cost function [....]. How can I improve it so that it doesn't break proper nouns into small pieces? Give examples.]
 ---
 
 ### Α3. Μέγεθος Λεξιλογίου & Συχνότητα Λέξεων
 
 | | |
 |---|---|
-| **Εργαλείο** | [εργαλείο] |
-| **Μοντέλο** | [μοντέλο] |
-| **Ποιος χρησιμοποίησε** | Μέλος 1 / Μέλος 2 / Και οι δύο |
+| **Εργαλείο** | [Claude] |
+| **Μοντέλο** | [Claude Opus 4.6] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
 
 **Prompt:**
 
-> [Αντιγράψτε εδώ το ακριβές prompt που δώσατε]
+> [Give me Python code for vocabulary analysis of ancient Greek texts: vocabulary size, top-N words, hapax legomena, Zipf plot. Use matplotlib.]
 
+**Prompt:**
+
+> [What does Zipf's law tell us about a corpus of ancient Greek inscriptions? How do we interpret the hapax legomena rate in relation to the nature of the corpus?]
+
+**Prompt:**
+
+> [Give me Python code for vocabulary analysis of ancient Greek texts: vocabulary size, top-N words, hapax legomena, Zipf plot. Use matplotlib.]
+
+**Prompt:**
+
+> [ Suggest simple matplotlib visualizations for word frequency analysis in a university NLP assignment. Include top words, rare words, and a Zipf-like frequency plot. ]
 ---
 
 ### Α4. Κύρια Ονόματα
 
 | | |
 |---|---|
-| **Εργαλείο** | [εργαλείο] |
-| **Μοντέλο** | [μοντέλο] |
-| **Ποιος χρησιμοποίησε** | Μέλος 1 / Μέλος 2 / Και οι δύο |
+| **Εργαλείο** | [Claude] |
+| **Μοντέλο** | [Claude Opus 4.6] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
+
 
 **Prompt:**
 
-> [Αντιγράψτε εδώ το ακριβές prompt που δώσατε]
+> [ Suggest simple matplotlib visualizations for word frequency analysis in a university NLP assignment. Include top words, rare words, and a Zipf-like frequency plot. ]
 
 ---
 
@@ -146,28 +189,30 @@
 
 | | |
 |---|---|
-| **Εργαλείο** | [εργαλείο] |
-| **Μοντέλο** | [μοντέλο] |
-| **Ποιος χρησιμοποίησε** | Μέλος 1 / Μέλος 2 / Και οι δύο |
+| **Εργαλείο** | [Claude] |
+| **Μοντέλο** | [Claude Opus 4.6] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
 
 **Prompt:**
 
-> [Αντιγράψτε εδώ]
+> [Can you explain to me what the Aeneas model does? I would also like you to show me how I can use it in an inscription analysis I have to do (the inscriptions are in ancient Greek) after first converting them to the appropriate format. Is there an online tool for this conversion that I can use?]
+
+**Prompt:**
+
+> [Can you give me an example so I can make a comparison plot with the data I'm attaching?]
 
 #### Α6b — Prompts χρονολόγησης (LLM ως πείραμα)
 
 | | |
 |---|---|
-| **Εργαλείο** | [εργαλείο] |
-| **Μοντέλο** | [μοντέλο] |
+| **Εργαλείο** | [ChatGpt] |
+| **Μοντέλο** | [Gpt 5.4] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
 
 **Prompt:**
 
-> [Αντιγράψτε εδώ το ακριβές prompt που στείλατε στο LLM για χρονολόγηση]
-
-**Απάντηση LLM (σύνοψη):**
-
-> [Σύντομη σύνοψη της απάντησης]
+> [Είσαι ειδικός επιγραφολόγος. Σου δίνω μόνο κείμενα αρχαίων ελληνικών επιγραφών. Βάσει γλωσσικών, μορφολογικών και θεματικών χαρακτηριστικών, εκτίμησε τη χρονολόγηση. Εξήγησε τη λογική σου. Κείμενα: [...]  
+llm_results = { # ΣΥΜΠΛΗΡΩΣΤΕ ΜΕ ΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ ΣΟΥ # 'inscription_id': {'estimated_year': ..., 'range': '...', 'reasoning': '...'},}]
 
 ---
 
