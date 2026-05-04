@@ -168,22 +168,65 @@ Suggest simple metrics I can implement in Python.]
 
 | | |
 |---|---|
-| **Εργαλείο** | [εργαλείο] |
-| **Μοντέλο** | [μοντέλο] |
-| **Ποιος χρησιμοποίησε** | Μέλος 1 / Μέλος 2 / Και οι δύο |
+| **Εργαλείο** | [Claude] |
+| **Μοντέλο** | [Claude Opus 4.6] |
+| **Ποιος χρησιμοποίησε** | Μέλος 2 |
+
 
 **Prompt:**
 
-> [Αντιγράψτε εδώ το ακριβές prompt που δώσατε]
+> [I want to do clustering on ancient Greek inscriptions. Explain to me the difference between TF-IDF + KMeans and topic modeling (LDA). When do I prefer one over the other? Give an example in Python.]
 
+**Prompt:**
+
+> [I want to cluster ancient Greek inscriptions (~224 texts).
+The texts come from word segmentation scriptio continua, so
+they may have noise. Which vectorization method is better:
+word-level TF-IDF or character n-gram TF-IDF? What are the advantages
+and disadvantages of each method? Give an example in Python.]
+
+**Prompt:**
+
+> [My silhouette scores are very low (0.02-0.03). What does this mean? How can I improve the clusters? Would UMAP, DBSCAN, or character-level features help?]
+
+**Prompt:**
+> [My silhouette scores are very low (0.02-0.03) in clustering
+ancient Greek inscriptions with KMeans + TF-IDF. What does this mean?
+Are my clusters useless? How can I improve the results?
+Would UMAP, DBSCAN, or character-level features help?]
+
+**Prompt:**
+> [ Σου δίνω τα top bigrams και trigrams από τα clusters μου:
+Cluster 2: "ΤΩΙ ΔΗΜΩΙ" (33×), "ΤΟΝ ΔΗΜΟΝ" (20×), "ΔΗΜΟΝ ΤΟΝ ΑΘΗΝΑΙΩΝ" (7×)
+Cluster 3: "ΑΓΑΘΗΙ ΤΥΧΗΙ" (2×), "ΕΠΙ ΑΡΧΟΝΤΟΣ" (3×)
+Cluster 0: "ΕΠΙ ΓΟΝΟΣ" (4×), "ΜΗΝ ΟΔΩΡΟΣ" (3×)
+Εξήγησέ μου τι τύπους αρχαίων ελληνικών επιγραφών αντιπροσωπεύουν.
+Ποιες είναι γνωστές formulae; Τι θα περίμενε ένας επιγραφολόγος;]
+
+**Prompt:**
+
+> [ Θέλω να κάνω ταυτόχρονα clustering (KMeans) και topic modeling (LDA) σε
+αρχαίες ελληνικές επιγραφές. Ποια η διαφορά μεταξύ τους; Πότε τα
+αποτελέσματα συμφωνούν και πότε διαφωνούν; Πώς μπορώ να τα συγκρίνω
+(confusion matrix, heatmap); Δώσε κώδικα Python.]
+
+**Prompt:**
+> [Το LDA μου βρήκε 5 topics σε αρχαίες ελληνικές επιγραφές. Τα top words:
+Topic 0: ΤΟΥ, ΤΗΣ, ΕΠΙ, ΠΥΘ, ΦΙΛΟ, ΑΝΤΙ, ΔΗΜ, ΑΛΕΞΑΝΔΡΟΣ
+Topic 1: ΚΑΙ, ΤΟΝ, ΤΩΝ, ΤΩΙ, ΤΗΣ, ΤΗΝ, ΕΙΣ, ΕΠΙ, ΚΑΤΑ
+Topic 2: ΙΟΣ, ΕΥΣ, ΣΙΟΣ, ΔΙΟΝΥΣΙΟΣ, ΔΙΟΝΥΣΙΟΥ, ΔΙΟ
+Topic 3: ΖΩΣΙΜΟΣ, ΜΟΣ, ΕΥΣ, ΕΠΙ, ΣΥΝ
+Topic 4: ΟΥΝ, ΤΟΝ, ΥΠΟ, ΔΙΟ, ΜΟΣ, ΣΥΝ, ΔΗΜ
+Δώσε μου ερμηνεία για κάθε topic. Τι τύπος επιγραφής αντιπροσωπεύεται;]
+
+**Prompt:**
+> [Έχω 4 γραφήματα για clustering αρχαίων επιγραφών: silhouette plot, PCA 2D
+scatter, bar μεγεθών, bar μέσου μήκους. Τι γραφήματα θα πρόσθετες; Θέλω
+κάτι που δείχνει τη σχέση μεταξύ KMeans clusters και LDA topics.
+Δώσε κώδικα σε Python (matplotlib/seaborn) για heatmap και boxplot.]
 ---
 
 ### Α6. Χρονολόγηση με Aeneas & Σύγκριση με LLM
-
-<!--
-ΣΗΜΑΝΤΙΚΟ: Σε αυτή την ενότητα χρησιμοποιείτε LLM ως μέρος του πειράματος (χρονολόγηση).
-Καταγράψτε ΚΑΙ τα prompts χρονολόγησης ΚΑΙ τυχόν prompts βοήθειας με τον κώδικα.
--->
 
 #### Α6a — Prompts βοήθειας κώδικα (Aeneas setup, σύγκριση κ.λπ.)
 
