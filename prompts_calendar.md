@@ -22,10 +22,10 @@
 | 01/05/2026 | Φόρτωση Δεδομένων | Ναι | debugging python code |
 | 02/05/2026 | Α1 — Transliteration | Ναι | Συνάρτηση μετατροπής Λατινικών σε Ελληνικά |
 | 02/05/2026 | Α2 — Word Segmentation | Ναι | Segmentaition - dynamic algorithm |
-| | Α3 — Λεξιλόγιο & Συχνότητα | | |
-| | Α4 — Κύρια Ονόματα | | |
-| | Α5 — Clustering & Topics | | |
-| 03/05/2026 | Α6 — Χρονολόγηση Aeneas/LLM | Ναι | Εξήγηση του μοντέλου, δημιουργία γραφημάτων για σύγκριση |
+| 03/05/2026 | Α3 — Λεξιλόγιο & Συχνότητα | Ναι | Δημιουργία κατάλληλων φίλτρων για την μέτρηση της συχνότητας |
+| 03/05/2026 | Α4 — Κύρια Ονόματα | Ναι | Χρήση CLTK για εντοπισμό κύριων ονομάτων |
+| 03/05/2026 | Α5 — Clustering & Topics | Ναι | Ομαδοποίηση εγγραφών |
+| 04/05/2026 | Α6 — Χρονολόγηση Aeneas/LLM | Ναι | Εξήγηση του μοντέλου, δημιουργία γραφημάτων για σύγκριση |
 | 02/05/2026 | Β1 — Προεπεξεργασία Εικόνων | Ναι | Κατανόηση τεχνικών preprocessing (CLAHE, Adaptive Thresholding), σχεδιασμός pipeline |
 | 02-03/05/2026 | Β2 — Image Clustering | Ναι | Εξήγηση ViT embeddings και PCA/UMAP, ανάλυση ζευγών Rotation1/2, ονοματοδοσία μέσω Gemini |
 | 03-04/05/2026 | Β3 — OCR Pipeline | Ναι | Ερωτήσεις για TrOCR vs VLM, σύνδεση contest_evaluation script,API με  Gemini VLM OCR, σύγκριση CER |
@@ -41,8 +41,8 @@
 
 | Εργαλείο | Μοντέλο | Σε ποιες ενότητες |
 |---|---|---|
-| Claude | Claude Opus 4.6 | Β1, Β2, Β3 (κώδικας, εξηγήσεις, debugging) | 
-| | | |
+| Claude | Claude Opus 4.6 | A1, A2, A3, A4, A5, A6, Β1, Β2, Β3 (κώδικας, εξηγήσεις, debugging) | 
+| ChatGpt | Gpt5.4 | Α6 Εκτίμηση χρονολογίας κειμένων | 
 | Google AI Studio | Gemini 3.1 Flash Lite Preview | Β2 (ονοματοδοσία clusters), Β3 (VLM OCR) |
 
 ---
@@ -141,7 +141,7 @@ Suggest simple metrics I can implement in Python.]
 
 **Prompt:**
 
-> [Give me Python code for vocabulary analysis of ancient Greek texts: vocabulary size, top-N words, hapax legomena, Zipf plot. Use matplotlib.]
+> [I have a list of segmented ancient Greek words from inscriptions. How can I compute vocabulary size, most frequent words, and rare words in Python using Counter and pandas?]
 
 **Prompt:**
 
@@ -160,6 +160,10 @@ Suggest simple metrics I can implement in Python.]
 **Prompt:**
 
 > [ Suggest simple matplotlib visualizations for word frequency analysis in a university NLP assignment. Include top words, rare words, and a Zipf-like frequency plot. ]
+
+> [How can I estimate gender of ancient Greek names using suffixes? Provide a simple rule-based approach suitable for a student project.]
+
+> [Suggest a simple heuristic method to detect proper names using frequency and stopwords in ancient greek language.] 
 
 ---
 
